@@ -15,6 +15,16 @@ cars.belongsTo(categories, {
   onDelete: "CASCADE",
   foreignKey: "categoryId",
 });
+bookings.hasOne(cars, {
+  onUpdate: "CASCADE",
+  onDelete: "CASCADE",
+  foreignKey: "carId",
+});
+cars.hasOne(bookings, {
+  onUpdate: "CASCADE",
+  onDelete: "CASCADE",
+  foreignKey: "carId",
+});
 
 const models = sequelize.models;
 

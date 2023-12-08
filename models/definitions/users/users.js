@@ -1,7 +1,5 @@
 const { DataTypes } = require("sequelize");
-
 let sequelize = require("../../../common/dbConnection");
-
 const users = sequelize.define(
   "users",
   {
@@ -11,8 +9,11 @@ const users = sequelize.define(
       type: DataTypes.INTEGER,
     },
     firstName: {
-      unique: true,
-      allowNull: false,
+      allowNull: true,
+      type: DataTypes.STRING,
+    },
+    lastName: {
+      allowNull: true,
       type: DataTypes.STRING,
     },
     email: {
@@ -22,7 +23,6 @@ const users = sequelize.define(
       validate: { isEmail: true },
     },
     password: {
-      unique: true,
       allowNull: false,
       type: DataTypes.STRING,
     },
@@ -34,5 +34,4 @@ const users = sequelize.define(
     modelName: "users",
   }
 );
-
 module.exports = users;
