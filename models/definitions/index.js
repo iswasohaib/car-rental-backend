@@ -3,7 +3,7 @@ let sequelize = require("../../common/dbConnection");
 let users = require("./users/users");
 let categories = require("./users/categories");
 let cars = require("./users/cars");
-const bookings = require("./users/bookings");
+let bookings = require("./users/bookings");
 
 categories.hasMany(cars, {
   onUpdate: "CASCADE",
@@ -15,12 +15,12 @@ cars.belongsTo(categories, {
   onDelete: "CASCADE",
   foreignKey: "categoryId",
 });
-bookings.hasOne(cars, {
+cars.hasOne(bookings, {
   onUpdate: "CASCADE",
   onDelete: "CASCADE",
   foreignKey: "carId",
 });
-cars.hasOne(bookings, {
+bookings.belongsTo(cars, {
   onUpdate: "CASCADE",
   onDelete: "CASCADE",
   foreignKey: "carId",
